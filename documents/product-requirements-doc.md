@@ -9,6 +9,10 @@
 
 ## MVP v1
 
+### Main User Workflow
+
+![main-user-workflow](MVP_V1_MAIN_USER_WORKFLOW.png)
+
 ### Requirements
 
 1. User може шукати Product за назвою товару або за назвою будь-якої властивості Product
