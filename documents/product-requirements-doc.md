@@ -13,32 +13,31 @@
 
 1. User може шукати Product за назвою товару або за назвою будь-якої властивості Product
 2. User может створити товар
-3. User може видалити існуючий товар
+3. User може деактивувати існуючий товар
 4. User може редагувати інформацю про товар
 TBD to validate possible requirements with @dnal01
 5. User може створити декілька Product одночасно OR User може створити декілька варіантів одного Product (напр. Картопля кругла червона та квадратна чорна.)
 6. Такі властивості Product як Amount & Total Price мають рахуватися у системі автоматично (напр. based on одиниця виміру / measurement)
 7. User має керувати кількістю товарів на складі
-    - напр. Залишкі, Додання при постачанні, Списання при продажам, Ручне / автоматичне списанням, Інвентаризація
+    - напр. Залишки, Додання при постачанні, Списання при продажам, Ручне / автоматичне списанням, Інвентаризація
 8. Система має автоматично перераховувати такі властивості Product як (i) Собівартість, (ii) Націнка & (iii) Ціну продажу після наступних операцій: Постачання, Списання, Інвентаризації.
 9. User може редагувати властивість Product таку як (i) Термін придатності товарів
+10. Деактивовані Entities не мають відображатися за default у Order, Promo, Product and Delivery entities.
 
-TBD to move these bullet points to the tech spec
 - Потрібна синхронізація та зберігання даних на сервері.
-- Не видаляти Entities а натомість диактивувати.
-- Деактивовані обʼєкти не мають відображатися у інтерфейсі.
 
 ### Entities
 
 There are main product entities are defines the scope of product on the MVP v1 phase:
 
 - Товари / Product
-- Клієнти / Client
+- Клієнти / Customer
 - Персонал / User
 - Акції / Promo
 - Рахунок / Account
-- Покупець / Customer
+- Постачальники / Vendor
 - Замовлення / Order
+- Постачання / Delivery
 
 Product entity має такі характеристи:
 
@@ -58,6 +57,71 @@ Product entity має такі характеристи:
 - Назва опції
 - Значення опції
 - Кількість
+- shelf life
+
+Customer entity має такі характеристи:
+
+- first name
+- last name
+- phone number
+- email address
+
+User entity має такі характеристи:
+
+- first name
+- last name
+- phone number
+- email address
+- role
+- salary
+- working schedule
+- worked hours / days
+- loging log ?
+- actions taken in the system?
+
+Promo entity має такі характеристи:
+
+- products
+- discount
+
+Account entity має такі характеристи:
+
+- type
+- current amount
+- currency
+- opening date
+- closing date
+- commission / deduction
+
+Vendor entity має такі характеристи:
+
+- company name
+- address
+- phone number
+
+Order entity має такі характеристи:
+
+- time
+- client
+- employee
+- discount
+- Promo
+- total price
+- products
+- price for each product
+- payment status
+- return status
+- order status
+
+Delivery entity має такі характеристи:
+
+- vendor
+- products
+- product amount
+- product cost
+- total cost
+- status
+- time
 
 ## MVP v2
 
