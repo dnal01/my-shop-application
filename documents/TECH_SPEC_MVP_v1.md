@@ -72,3 +72,85 @@ Developing search fields as the Fuzzy search. Fuzzy search is a search technique
     КЛІЄНТ
     АНАЛІТИКА (вся)
     АКЦІЇ
+
+
+# Data schema
+
+## Product
+BIGINT id NOT NULL AUTOCOMPLETE (PRIMARY KEY)
+
+Назва
+
+Опис
+Одиниця виміру
+Категорія
+Виробник
+Бренд
+Групування за
+Тип
+Варіанти
+Ціна закупівлі
+Середня субіварітсть
+Штрихкод
+Фото
+Назва опції
+Значення опції
+Кількість
+shelf life
+Customer entity має такі характеристи:
+
+first name
+last name
+phone number
+email address
+User entity має такі характеристи:
+
+first name
+last name
+phone number
+email address
+role
+salary
+working schedule
+worked hours / days
+loging log ?
+actions taken in the system?
+Promo entity має такі характеристи:
+
+products
+discount
+Account entity має такі характеристи:
+
+type
+current amount
+currency
+opening date
+closing date
+commission / deduction
+Vendor entity має такі характеристи:
+
+company name
+address
+phone number
+Order entity має такі характеристи:
+
+time
+client
+employee
+discount
+Promo
+total price
+products
+price for each product
+payment status
+return status
+order status
+Delivery entity має такі характеристи:
+
+vendor
+products
+product amount
+product cost
+total cost
+status
+time
