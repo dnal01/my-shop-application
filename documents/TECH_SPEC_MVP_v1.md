@@ -26,30 +26,87 @@ Model `Product`
   - order_limits: SMALLINT, NOT NULL
   - option_value_id: SMALLINT, NOT NULL
   - option_name_id: SMALLINT, NOT NULL
+  - promo_id: SMALLINT, NOT NULL
   - product_id: MEDIUMINT, NOT NULL
   - is_deactivated: TINYINT(1), NOT NULL
 
 Model `Customer`
 
+- id: MEDIUMINT, NOT NULL
+- first_name: VARCHAR(20), NOT NULL
+- last_name: VARCHAR(20), NOT NULL
+- phone_number: VARCHAR(24), NOT NULL
+- email_address: VARCHAR(64), NOTNULL
 
 Model `User`
 
+- id: MEDIUMINT, NOT NULL
+- first_name: VARCHAR(20), NOT NULL
+- last_name: VARCHAR(20), NOT NULL
+- phone_number: VARCHAR(24), NOT NULL
+- email_address: VARCHAR(64), NOT NULL
+- role_id: SMALLINT, NOT NULL
+- salary: MEDIUMINT, NOT NULL
 
 Model `Promo`
 
+- id: MEDIUMINT, NOT NULL
+- title: VARCHAR(100), NOT NULL
+- discount: SMALLINT, MOT NULL
 
 Model `Account`
 
+- id: SMALLINT, NOT NULL
+- title: VARCHAR(100), NOT NULL
+- type_id: SMALLINT, MOT NULL
+- current_amount: MEDIUMINT, NOT NULL
+- currency_id: SMALLINT, MOT NULL
+- openning_date, DATETIME, NOT NULL
+- closing_date, DATETIME, NOT NULL
+- bank_commision, SMALLINT, NOTNULL
 
 Model `Vendor`
 
+- id: SMALLINT, NOT NULL
+- company_name: VARCHAR(100), NOT NULL
+- address: SMALLINT, NOTNULL
+- phone_number: SMALLINT, NOTNULL
 
 Model `Order`
 
+- id: BIGINT, NOT NULL
+- date_time: DATETIME, NOT NULL
+- client_id: SMALLINT, MOTNULL
+- employee_id: MEDIUMINT, NOT NULL
+- total_price: MEDIUMINT, NOT NULL
+- payment_status_id: SMALLINT, NOT NULL
+- return_status_id: SMALLINT, NOT NULL
+- order_status_id: SMALLINT, NOT NULL
+
+  Sub-model `Order_Variant`
+  - id: BIGINT, NOT NULL
+  - order_id: BIGINT, NOT NULL
+  - variant_id: MEDIUMINT, MOT NULL
+  - discount: SMALLINT, NOT NULL
+  - promo_id: TINYINT(1), NOTNULL
+  - price: MEDIUMINT, NOT NULL
+  - quantity: MEDIUMINT, NOT NULL
 
 Model `Delivery`
 
+- id: BIGINT, NOT NULL
+- date_time: DATETIME, NOT NULL
+- vendor_id: SMALLINT, MOTNULL
+- employee_id: MEDIUMINT, NOT NULL
+- total_cost: MEDIUMINT, NOT NULL
+- delivery_status_id: SMALLINT, NOT NULL
 
+  Sub-model `Delivery_Variant`
+  - id: BIGINT, NOT NULL
+  - delivery_id: BIGINT, NOT NULL
+  - variant_id: MEDIUMINT, MOT NULL
+  - cost: MEDIUMINT, NOT NULL
+  - quantity: MEDIUMINT, NOT NULL
 
 ## Application Architecture
 
@@ -67,7 +124,7 @@ TBD to describe next bullet points from technical side:
 - Infrastructure around project & codebase 
 
 ## Misceleneous
-
+*add shelflife. working schedule, worked gours, logging log and actions taken.
 Назва
 
 Опис
