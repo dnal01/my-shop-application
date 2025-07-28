@@ -1,83 +1,59 @@
-Developing search fields as the Fuzzy search. Fuzzy search is a search technique that finds matches even when the search query doesn't perfectly match corresponding data. It looks beyond literal character-for-character matching and identifies results that are similar to the search query in terms of spelling, meaning, or other criteria.
+# Tech Spec, MVP v1
+
+## Data Scheme
+
+Model `Product` 
+
+- title: BIGINT, NOT NULL
+- description
+
+TBD to add all properties to the model Product
 
 
-ТОВАРИ НА ПРОДАЖ
+Model `Customer`
 
-- Додавати товари до систему
-  - схема: прийшов товар - дав гроші - отримав товар - виставив на продаж
-- існує 2 категорії товарів:
-  - продукти на продаж
-  - продукти власного використання (те що не на продаж але треба для ведення бізнесу)
-    - мило в туалеті
-    - електроенергія
+TBD to add all properties to the model Customer
 
-- Система має проводити інвентаризацію при цьому сканувати штрих код (Робити інвентаризацію не вибираючи перед тим товар тобто якийсь код відсканував такий товар і буде інвентаризований)
-- Показувати при продажу (вибору) товару, його кількість у залишках
-- Показувати сповіщення коли товар майже або взагалі закінчився після продажу
+Model `User`
 
-ПОСТАЧАННЯ
+TBD to add all properties to the model User
 
-- Зробити листок товарів до замовлення постачання (їх назва, кількість) - автоматично формується з урахуванням продажів та лімітів (можливість додати твоар вручну).
-- Колий товар прийшов редагувати листок замовлення та внести фактичні кількості та товари. (можливість видалити товар зі списку якщо такий не поставився, або додати вручну якщо прийшов додатковий)
-- Поля у листку: кількості твоірів, назва, хто поставив, загальна сума, ціна купівлі та продажу, дата
+Model `Promo`
 
-ЗАМОВЛЕННЯ
+TBD to add all properties to the model Promo
 
-- сформувати замовлення з набору товарів (при продажі товарів)
-- Модифікувати замовлення
-- Оплатити готівкою
+Model `Account`
 
-РАХУНОК КОМПАНІЇ
+TBD to add all properties to the model Account
 
-- 2 типу рахунків: (1) готівковий рахунок та (2) безготівковий рахунок
-- cash account properties:
-  - Номер рахунку
-  - Сума
-  - Валюта
-  - Дата відкриття
-  - Дата закриття
-- bank account properties:
-  - Комісія за кожну транзакцію на банківський рахунок
-  - Номер рахунку
-  - Сума
-  - Валюта
-  - Дата відкриття
-  - Дата закриття
-- готівковий рахунок у гривні UAH
-- безготівковий рахунок у гривні (UAH)
-- Контролювати витрати та доходи (debit and credit)
-  - TBD описати математику обрахунку при додаванні товару в систему
-  - TBD описати математику обрахунку при продажі товару клієнтам магазину 
-- (optional) готівковий рахунок у іншій валюті, напр. EUR
-- (optional) безготівковий рахунок у іншій валюті, напр. EUR
+Model `Vendor`
 
-ПРАЦІВНИКИ
+TBD to add all properties to the model Vendor
 
-- Ролі: продавець, адміністратор
-- Може бути ~10 параметрів
-- Доступ до:
-  Role: cashier
-    ТОВАРИ
-    ПОСТАЧАННЯ
-    ЗАМОВЛЕННЯ
-    КЛІЄНТ
-    АНАЛІТИКА (інформацію про товари (популярність, кількість продажів, постачань, кількість твоарів у постачаннях...)
-    АКЦІЇ
+Model `Order`
 
-  Role: administrator
-    ТОВАРИ
-    ПОСТАЧАННЯ
-    ЗАМОВЛЕННЯ
-    РАХУНКИ
-    КЛІЄНТ
-    АНАЛІТИКА (вся)
-    АКЦІЇ
+TBD to add all properties to the model Order
 
+Model `Delivery`
 
-# Data schema
+TBD to add all properties to the model Delivery
 
-## Product
-BIGINT id NOT NULL AUTOCOMPLETE (PRIMARY KEY)
+## Application Architecture
+
+1. Apple MVC arch: https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html 
+2. MVVM arch. from Apple Community: https://www.hackingwithswift.com/books/ios-swiftui/introducing-mvvm-into-your-swiftui-project 
+3. Redux architecture, based on js: https://redux.js.org/tutorials/fundamentals/part-1-overview and https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow 
+
+## Main User Workflow 
+
+TBD to describe next bullet points from technical side:
+
+- UI and UX specifics (SwiftUI vs UIKit)
+- App Navigation (how exactly navigation work)
+- Services & business logic in entire application 
+- Infrastructure around project & codebase 
+
+## Misceleneous
 
 Назва
 
@@ -154,3 +130,78 @@ product cost
 total cost
 status
 time
+
+Developing search fields as the Fuzzy search. Fuzzy search is a search technique that finds matches even when the search query doesn't perfectly match corresponding data. It looks beyond literal character-for-character matching and identifies results that are similar to the search query in terms of spelling, meaning, or other criteria.
+
+
+ТОВАРИ НА ПРОДАЖ
+
+- Додавати товари до систему
+  - схема: прийшов товар - дав гроші - отримав товар - виставив на продаж
+- існує 2 категорії товарів:
+  - продукти на продаж
+  - продукти власного використання (те що не на продаж але треба для ведення бізнесу)
+    - мило в туалеті
+    - електроенергія
+
+- Система має проводити інвентаризацію при цьому сканувати штрих код (Робити інвентаризацію не вибираючи перед тим товар тобто якийсь код відсканував такий товар і буде інвентаризований)
+- Показувати при продажу (вибору) товару, його кількість у залишках
+- Показувати сповіщення коли товар майже або взагалі закінчився після продажу
+
+ПОСТАЧАННЯ
+
+- Зробити листок товарів до замовлення постачання (їх назва, кількість) - автоматично формується з урахуванням продажів та лімітів (можливість додати твоар вручну).
+- Колий товар прийшов редагувати листок замовлення та внести фактичні кількості та товари. (можливість видалити товар зі списку якщо такий не поставився, або додати вручну якщо прийшов додатковий)
+- Поля у листку: кількості твоірів, назва, хто поставив, загальна сума, ціна купівлі та продажу, дата
+
+ЗАМОВЛЕННЯ
+
+- сформувати замовлення з набору товарів (при продажі товарів)
+- Модифікувати замовлення
+- Оплатити готівкою
+
+РАХУНОК КОМПАНІЇ
+
+- 2 типу рахунків: (1) готівковий рахунок та (2) безготівковий рахунок
+- cash account properties:
+  - Номер рахунку
+  - Сума
+  - Валюта
+  - Дата відкриття
+  - Дата закриття
+- bank account properties:
+  - Комісія за кожну транзакцію на банківський рахунок
+  - Номер рахунку
+  - Сума
+  - Валюта
+  - Дата відкриття
+  - Дата закриття
+- готівковий рахунок у гривні UAH
+- безготівковий рахунок у гривні (UAH)
+- Контролювати витрати та доходи (debit and credit)
+  - TBD описати математику обрахунку при додаванні товару в систему
+  - TBD описати математику обрахунку при продажі товару клієнтам магазину 
+- (optional) готівковий рахунок у іншій валюті, напр. EUR
+- (optional) безготівковий рахунок у іншій валюті, напр. EUR
+
+ПРАЦІВНИКИ
+
+- Ролі: продавець, адміністратор
+- Може бути ~10 параметрів
+- Доступ до:
+  Role: cashier
+    ТОВАРИ
+    ПОСТАЧАННЯ
+    ЗАМОВЛЕННЯ
+    КЛІЄНТ
+    АНАЛІТИКА (інформацію про товари (популярність, кількість продажів, постачань, кількість твоарів у постачаннях...)
+    АКЦІЇ
+
+  Role: administrator
+    ТОВАРИ
+    ПОСТАЧАННЯ
+    ЗАМОВЛЕННЯ
+    РАХУНКИ
+    КЛІЄНТ
+    АНАЛІТИКА (вся)
+    АКЦІЇ
