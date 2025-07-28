@@ -4,39 +4,52 @@
 
 Model `Product` 
 
-- title: BIGINT, NOT NULL
-- description
+- id: MEDIUMINT, NOT NULL
+- title: VARCHAR(100), NOT NULL
+- description: VARCHAR(255), NOT NULL
+- category: VARCHAR(255), NOT NULL
+- measure_unit: VARCHAR(255), NOT NULL
+- vendor_id: SMALLINT, NOT NULL
+- brand_id: SMALLINT, NOT NULL
+- group_by_id: SMALLINT, NOT NULL
+- type_id: SMALLINT, NOT NULL
+- is_weighed: TINYINT(1), NOT NULL
+- is_deactivated: TINYINT(1), NOT NULL
 
-TBD to add all properties to the model Product
-
+  Sub-model `Variant`
+  - id: MEDIUMINT, NOT NULL
+  - media: VARCHAR(255), NOT NULL
+  - barcode: VARCHAR(255), NOT NULL
+  - avarage_cost: MEDIUMINT, NOT NULL
+  - quantity: MEDIUMINT, NOT NULL
+  - price: INT, NOT NULL
+  - order_limits: SMALLINT, NOT NULL
+  - option_value_id: SMALLINT, NOT NULL
+  - option_name_id: SMALLINT, NOT NULL
+  - product_id: MEDIUMINT, NOT NULL
+  - is_deactivated: TINYINT(1), NOT NULL
 
 Model `Customer`
 
-TBD to add all properties to the model Customer
 
 Model `User`
 
-TBD to add all properties to the model User
 
 Model `Promo`
 
-TBD to add all properties to the model Promo
 
 Model `Account`
 
-TBD to add all properties to the model Account
 
 Model `Vendor`
 
-TBD to add all properties to the model Vendor
 
 Model `Order`
 
-TBD to add all properties to the model Order
 
 Model `Delivery`
 
-TBD to add all properties to the model Delivery
+
 
 ## Application Architecture
 
