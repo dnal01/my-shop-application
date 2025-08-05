@@ -7,11 +7,10 @@ Model `Product`
 - id: MEDIUMINT, NOT NULL
 - title: VARCHAR(100), NOT NULL
 - description: VARCHAR(255), NOT NULL
-- category: VARCHAR(255), NOT NULL
-- measure_unit: VARCHAR(255), NOT NULL
+- category_id: VARCHAR(255), NOT NULL
+- measure_unit_id: VARCHAR(255), NOT NULL
 - vendor_id: SMALLINT, NOT NULL
 - brand_id: SMALLINT, NOT NULL
-- group_by_id: SMALLINT, NOT NULL
 - type_id: SMALLINT, NOT NULL
 - is_weighed: TINYINT(1), NOT NULL
 - is_deactivated: TINYINT(1), NOT NULL
@@ -21,11 +20,11 @@ Model `Product`
   - media: VARCHAR(255), NOT NULL
   - barcode: VARCHAR(255), NOT NULL
   - avarage_cost: MEDIUMINT, NOT NULL
-  - quantity: MEDIUMINT, NOT NULL
+  - quantity: DECIMAL(6,4), NOT NULL
   - price: INT, NOT NULL
   - order_limits: SMALLINT, NOT NULL
-  - option_value_id: SMALLINT, NOT NULL
-  - option_name_id: SMALLINT, NOT NULL
+  - option_value: SMALLINT, NOT NULL
+  - option_table_id: XL / blue / rubber
   - promo_id: SMALLINT, NOT NULL
   - product_id: MEDIUMINT, NOT NULL
   - is_deactivated: TINYINT(1), NOT NULL
@@ -86,7 +85,7 @@ Model `Order`
   Sub-model `Order_Variant`
   - id: BIGINT, NOT NULL
   - order_id: BIGINT, NOT NULL
-  - variant_id: MEDIUMINT, MOT NULL
+  - product_variant_id: MEDIUMINT, MOT NULL
   - discount: SMALLINT, NOT NULL
   - promo_id: TINYINT(1), NOTNULL
   - price: MEDIUMINT, NOT NULL
@@ -104,7 +103,7 @@ Model `Delivery`
   Sub-model `Delivery_Variant`
   - id: BIGINT, NOT NULL
   - delivery_id: BIGINT, NOT NULL
-  - variant_id: MEDIUMINT, MOT NULL
+  - product_variant_id: MEDIUMINT, MOT NULL
   - cost: MEDIUMINT, NOT NULL
   - quantity: MEDIUMINT, NOT NULL
 
