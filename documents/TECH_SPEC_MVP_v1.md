@@ -13,6 +13,11 @@ Model `Product`
 - brand_id: SMALLINT, NOT NULL
 - type_id: SMALLINT, NOT NULL
 - is_weighed: TINYINT(1), NOT NULL
+is_weighed true or false influence user interfaces during scanning a barcode when selling a product.
+A new modal view appears, asking to enter weight of the product.
+
+Also when adding product quantity and manipulating with inventory only those products which are weighed contain decimal number, otherwise it is an integer.
+
 - is_deactivated: TINYINT(1), NOT NULL
 
   Sub-model `Variant`
@@ -21,13 +26,16 @@ Model `Product`
   - barcode: VARCHAR(255), NOT NULL
   - avarage_cost: MEDIUMINT, NOT NULL
   - quantity: DECIMAL(6,4), NOT NULL
+Checks if the product is weighed, if not only integer is allowed.
   - price: INT, NOT NULL
   - order_limits: SMALLINT, NOT NULL
+When the limit is above actual inventory ammount, the push up is triggered on the employee UI side.
   - option_value: SMALLINT, NOT NULL
   - option_table_id: XL / blue / rubber
   - promo_id: SMALLINT, NOT NULL
   - product_id: MEDIUMINT, NOT NULL
   - is_deactivated: TINYINT(1), NOT NULL
+If deactivated is true, than hide product from the UI and exclude from the deliveries, orders and inventory lsit
  
   Sub-model `Categories`
   - id:
@@ -102,6 +110,7 @@ Model `User`
 - phone_number: VARCHAR(24), NOT NULL
 - email_address: VARCHAR(64), NOT NULL
 - role_id: SMALLINT, NOT NULL
+Different role provides different access to the system. View, Edit or Full access.
 - salary: MEDIUMINT, NOT NULL
 - pin:
 - enterence_history:
@@ -127,9 +136,11 @@ Model `Account`
 - type_id: SMALLINT, MOT NULL
 - current_amount: MEDIUMINT, NOT NULL
 - currency_id: SMALLINT, MOT NULL
+Currency fetches the current market cost and saves this value together with the transactions, letter to calculate earnings amoung different accounts.
 - openning_date, DATETIME, NOT NULL
 - closing_date, DATETIME, NOT NULL
 - bank_commision, SMALLINT, NOTNULL
+Commision is didacted from the credit card payments, either by the end of the day from total amount or from each of the order.
 
   Sub-model `types`
   - id:
@@ -155,6 +166,7 @@ Model `Order`
 - employee_id: MEDIUMINT, NOT NULL
 - total_price: MEDIUMINT, NOT NULL
 - payment_status_id: SMALLINT, NOT NULL
+Money will be withdrawn from an acount if refunded, partly.
 - return_status_id: SMALLINT, NOT NULL
 - order_status_id: SMALLINT, NOT NULL
 
@@ -236,6 +248,7 @@ TBD to describe next bullet points from technical side:
 
 - UI and UX specifics (SwiftUI vs UIKit)
 - App Navigation (how exactly navigation work)
+All tabs are on one screen. The state is saved of each of the tab.
 - Services & business logic in entire application 
 - Infrastructure around project & codebase 
 
