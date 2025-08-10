@@ -28,6 +28,63 @@ Model `Product`
   - promo_id: SMALLINT, NOT NULL
   - product_id: MEDIUMINT, NOT NULL
   - is_deactivated: TINYINT(1), NOT NULL
+ 
+  Sub-model `Categories`
+  - id:
+  - name:
+  - children:
+  - attributes:
+ 
+  Sub-model `Attributes`
+  - id:
+  - name:
+  - description:
+  - values:
+ 
+  Sub-model `measure-unit`
+  - id:
+  - class:
+  - values_full:
+  - values_short:
+  *** Sub-model `measure-unit` list
+  - Weight:
+    - Milligram (ml)
+    - Gram (g)
+    - Kilogram (kg)
+  - Volume:
+    - Milliliter (ml)
+    - Liter (L)
+    - Centimiter
+    - Cubik Meter (m3)
+  - Size:
+    - Millimeter (mm)
+    - Centimeter (cm)
+    - Meter (m)
+  - Area:
+    - Square meter (m2)
+  - Per item:
+    - Item (Item)
+
+  Sub-model `Vendor`
+  - id:
+  - name:
+  - phone:
+  - address:
+ 
+  Sub-model `brand`
+  - id:
+  - title:
+  - company:
+ 
+  Sub-model `Type`
+  - id:
+  - title:
+ 
+  Sub-model `Promos`
+  - id:
+  - discount_code:
+  - discount_value:
+  - products:
 
 Model `Customer`
 
@@ -46,6 +103,16 @@ Model `User`
 - email_address: VARCHAR(64), NOT NULL
 - role_id: SMALLINT, NOT NULL
 - salary: MEDIUMINT, NOT NULL
+- pin:
+- enterence_history:
+
+  Sub-model `roles`
+  - id:
+  - title:
+  *** Sub-model `Vendor` list
+  - admin;
+  - cassier;
+  - delivery_guy
 
 Model `Promo`
 
@@ -63,6 +130,15 @@ Model `Account`
 - openning_date, DATETIME, NOT NULL
 - closing_date, DATETIME, NOT NULL
 - bank_commision, SMALLINT, NOTNULL
+
+  Sub-model `types`
+  - id:
+  - title:
+ 
+  Sub-model `Currency`
+  - id:
+  - title:
+  - rate:
 
 Model `Vendor`
 
@@ -90,6 +166,37 @@ Model `Order`
   - promo_id: TINYINT(1), NOTNULL
   - price: MEDIUMINT, NOT NULL
   - quantity: MEDIUMINT, NOT NULL
+ 
+  Sub-model `payment_statuses`
+  - id:
+  - title:
+  - description:
+   *** Sub-model `payment_statuses` list
+  - pending;
+  - authorised;
+  - paid;
+  - Refunded;
+  - Partially refunded;
+  - partially_payed;
+  - Voided;
+  - Unpaid.
+
+  Sub-model `return_statuses`
+  - id:
+  - title:
+  *** Sub-model `return_statuses` list
+  - return requested;
+  - return in progress;
+  - Returned;
+  - Declined
+ 
+  Sub-model `order_statuses`
+  - id:
+  - title:
+ *** Sub-model `order_statuses` list
+  - open;
+  - archived;
+  - canceled
 
 Model `Delivery`
 
@@ -106,6 +213,16 @@ Model `Delivery`
   - product_variant_id: MEDIUMINT, MOT NULL
   - cost: MEDIUMINT, NOT NULL
   - quantity: MEDIUMINT, NOT NULL
+ 
+  Sub-model `delivery_statuses`
+  - id:
+  - title
+  *** Sub-model `delivery_statuses` list
+  - draft;
+  - ordered;
+  - received;
+  - canceled;
+  - closed
 
 ## Application Architecture
 
