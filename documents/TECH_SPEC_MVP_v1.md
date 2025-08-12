@@ -234,7 +234,7 @@ Model `Delivery`
   - ordered;
   - received;
   - canceled;
-  - closed
+  - closed.
 
 ## Application Architecture
 
